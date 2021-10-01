@@ -12,15 +12,17 @@ import time
 battery = psutil.sensors_battery()
 
 #print the current percentage of the battery
-print(str(battery.percent))
+print("The battery is remaining " + str(battery.percent))
 
 #loop to check whether the battery percentage is divisible by 10
 while True:
 	battery = psutil.sensors_battery()
-	Message = " Battery is remaining " + str(battery.percent) + " percent"
+	Message = " The Battery is remaining only " + str(battery.percent) + " percent"
 	if battery.percent % 10 == 0:
+		#convert the text to speech
 		engine.say(Message)
 		engine.runAndWait()
+		#function to sleep the program for 20 seconds
 		time.sleep(20)
 	else:
 		pass
